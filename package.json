@@ -1,0 +1,28 @@
+{
+  "name": "esy-argon2",
+  "version": "1.20190702.1",
+  "description": "argon2 packaged for esy",
+  "esy": {
+    "buildsInSource": true,
+    "build": [
+      "make DESTDIR=$cur__install PREFIX=''"
+    ],
+    "exportedEnv": {
+      "CFLAGS": {
+        "scope": "global",
+        "val": "-I#{self.install / 'include'} $CFLAGS"
+      },
+      "LDFLAGS": {
+        "scope": "global",
+        "val": "-L#{self.lib} -lz $LDFLAGS"
+      },
+      "PKG_CONFIG_PATH": {
+        "scope": "global",
+        "val": "#{self.lib / 'pkgconfig' : $PKG_CONFIG_PATH }"
+      }
+    },
+    "install": [
+      "make DESTDIR=$cur__install PREFIX='' install"
+    ]
+  }
+}

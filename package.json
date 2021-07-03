@@ -5,7 +5,7 @@
   "esy": {
     "buildsInSource": true,
     "build": [
-      "make DESTDIR=$cur__install PREFIX=''"
+      "make PREFIX=#{self.install}"
     ],
     "exportedEnv": {
       "CFLAGS": {
@@ -22,7 +22,7 @@
       }
     },
     "install": [
-      "make DESTDIR=$cur__install PREFIX='' install"
+      "make PREFIX=#{self.install} install"
     ]
   }
 }
